@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#312e81"/>
+      <stop offset="0.6" stop-color="#c2410c"/>
+      <stop offset="1" stop-color="#fb923c"/>
+    </linearGradient>
+    <pattern id="lit" width="16" height="20" patternUnits="userSpaceOnUse">
+      <rect x="4" y="5" width="7" height="9" fill="#fde68a"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="240" fill="url(#sky)"/>
+  <g fill="#e2e8f0" opacity="0.22">
+    <circle cx="70" cy="62" r="16"/>
+    <circle cx="92" cy="46" r="20"/>
+    <circle cx="122" cy="30" r="24"/>
+    <circle cx="300" cy="52" r="18"/>
+    <circle cx="326" cy="34" r="22"/>
+  </g>
+  <rect y="150" width="400" height="90" fill="#431407"/>
+  <g fill="#1c1917">
+    <rect x="16" y="120" width="92" height="120"/>
+    <rect x="28" y="96" width="12" height="30"/>
+    <rect x="62" y="84" width="14" height="42"/>
+    <rect x="130" y="132" width="110" height="108"/>
+    <rect x="250" y="100" width="16" height="140"/>
+    <rect x="276" y="144" width="124" height="96"/>
+  </g>
+  <g fill="url(#lit)">
+    <rect x="16" y="120" width="92" height="120"/>
+    <rect x="130" y="132" width="110" height="108"/>
+    <rect x="276" y="144" width="124" height="96"/>
+  </g>
+  <circle cx="34" cy="94" r="3" fill="#f87171"/>
+  <circle cx="69" cy="82" r="3" fill="#f87171"/>
+  <circle cx="258" cy="98" r="3" fill="#f87171"/>
+</svg>

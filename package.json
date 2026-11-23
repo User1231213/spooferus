@@ -1,11 +1,13 @@
 {
   "name": "spooferus",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "type": "module",
   "description": "Tıkla ve geliştir tarzı idle clicker oyunu",
   "scripts": {
     "start": "npx http-server www -p 8080 -c-1",
-    "check": "node --check www/js/game.js"
+    "sim": "node scripts/simulate.mjs",
+    "check": "node --check www/js/main.js"
   },
   "dependencies": {
     "@capacitor/android": "^8.6.2",

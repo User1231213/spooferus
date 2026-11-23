@@ -2,37 +2,109 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Spooferus - Tıkla Geliştir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#121727" />
+  <meta name="description" content="Spooferus - Tıkla, geliştir, imparatorluğunu kur. Bölümleri aç, üreteçleri satın al, başarımları topla." />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <title>Spooferus · Tıkla ve Geliştir</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <main class="game">
-    <header class="stats">
-      <div class="coins"><span id="coins">0</span> <small>coin</small></div>
-      <div class="cps"><span id="cps">0</span> <small>/sn</small></div>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg class="brand-logo" aria-hidden="true"><use href="assets/sprites.svg#i-logo"></use></svg>
+        <span class="brand-name">Spooferus</span>
+      </div>
+      <div class="top-actions">
+        <button id="btn-sound" class="icon-btn" type="button" aria-label="Sesi kapat"></button>
+        <button id="btn-settings" class="icon-btn" type="button" aria-label="Ayarlar"></button>
+      </div>
     </header>
 
-    <button id="clicker" class="clicker" type="button" aria-label="Tıkla">
-      <span class="clicker-icon">🪙</span>
-    </button>
+    <div class="layout">
+      <section class="stage" aria-label="Oyun alanı">
+        <img id="scene" class="scene" src="assets/scenes/ch1.svg" alt="" />
+        <div class="stage-shade"></div>
 
-    <section class="shop" aria-label="Geliştirmeler">
-      <button class="upgrade" id="up-click" type="button">
-        <span class="name">Güçlü Tıklama</span>
-        <span class="desc">+1 tık başına</span>
-        <span class="cost"><span id="cost-click">15</span> coin · Sahip: <span id="owned-click">0</span></span>
-      </button>
-      <button class="upgrade" id="up-auto" type="button">
-        <span class="name">Otomatik Tıklayıcı</span>
-        <span class="desc">+1 /sn</span>
-        <span class="cost"><span id="cost-auto">50</span> coin · Sahip: <span id="owned-auto">0</span></span>
-      </button>
-    </section>
+        <div class="hud-top">
+          <div class="chapter-tag">Bölüm <b id="chapter-no">1</b> · <span id="chapter-name">Köy Madeni</span></div>
+          <div class="coins">
+            <svg class="coin-icon" aria-hidden="true"><use href="assets/sprites.svg#i-coin"></use></svg>
+            <span id="coins">0</span>
+          </div>
+          <div class="cps"><span id="cps">0</span> altın / sn</div>
+        </div>
 
-    <button id="reset" class="reset" type="button">Sıfırla</button>
-  </main>
+        <button id="tap" class="tap" type="button" aria-label="Altın kazmak için dokun">
+          <span class="tap-glow" aria-hidden="true"></span>
+          <svg class="tap-art" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/sprites.svg#i-ore"></use></svg>
+        </button>
 
-  <script src="js/game.js"></script>
+        <div class="hud-bottom">
+          <div class="progress" aria-hidden="true"><div id="chapter-fill" class="progress-fill"></div></div>
+          <div class="hud-row">
+            <span id="chapter-next" class="next-text"></span>
+            <span class="tap-power">Tık <b id="tap-power">1</b></span>
+          </div>
+        </div>
+
+        <div id="fx" class="fx" aria-hidden="true"></div>
+      </section>
+
+      <section class="shop" aria-label="Mağaza">
+        <nav class="tabs" role="tablist">
+          <button class="tab active" type="button" role="tab" data-tab="gens" aria-selected="true">
+            <svg class="ico" aria-hidden="true"><use href="assets/sprites.svg#i-cart"></use></svg><span>Üreteçler</span>
+          </button>
+          <button class="tab" type="button" role="tab" data-tab="upg" aria-selected="false">
+            <svg class="ico" aria-hidden="true"><use href="assets/sprites.svg#i-bolt"></use></svg><span>Geliştirme</span>
+          </button>
+          <button class="tab" type="button" role="tab" data-tab="ach" aria-selected="false">
+            <svg class="ico" aria-hidden="true"><use href="assets/sprites.svg#i-trophy"></use></svg><span>Başarım</span>
+          </button>
+          <button class="tab" type="button" role="tab" data-tab="chap" aria-selected="false">
+            <svg class="ico" aria-hidden="true"><use href="assets/sprites.svg#i-flag"></use></svg><span>Bölümler</span>
+          </button>
+        </nav>
+
+        <div id="buy-modes" class="buy-modes" role="group" aria-label="Satın alma miktarı">
+          <button type="button" class="chip active" data-mode="1">×1</button>
+          <button type="button" class="chip" data-mode="10">×10</button>
+          <button type="button" class="chip" data-mode="100">×100</button>
+          <button type="button" class="chip" data-mode="max">Maks</button>
+        </div>
+
+        <section id="tab-gens" class="panel active" role="tabpanel">
+          <ul id="gen-list" class="list"></ul>
+        </section>
+
+        <section id="tab-upg" class="panel" role="tabpanel">
+          <div id="upg-grid" class="list"></div>
+        </section>
+
+        <section id="tab-ach" class="panel" role="tabpanel">
+          <p id="ach-bonus" class="panel-note"></p>
+          <div id="ach-grid" class="ach-grid"></div>
+        </section>
+
+        <section id="tab-chap" class="panel" role="tabpanel">
+          <ol id="chap-list" class="chapters"></ol>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title"></h2>
+      <p id="modal-body"></p>
+      <div id="modal-actions" class="modal-actions"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
