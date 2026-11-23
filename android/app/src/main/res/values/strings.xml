@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Spooferus</string>
+    <string name="title_activity_main">Spooferus</string>
+    <string name="package_name">com.spooferus.game</string>
+    <string name="custom_url_scheme">com.spooferus.game</string>
+</resources>

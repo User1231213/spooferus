@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Spooferus - Tıkla Geliştir</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="game">
+    <header class="stats">
+      <div class="coins"><span id="coins">0</span> <small>coin</small></div>
+      <div class="cps"><span id="cps">0</span> <small>/sn</small></div>
+    </header>
+
+    <button id="clicker" class="clicker" type="button" aria-label="Tıkla">
+      <span class="clicker-icon">🪙</span>
+    </button>
+
+    <section class="shop" aria-label="Geliştirmeler">
+      <button class="upgrade" id="up-click" type="button">
+        <span class="name">Güçlü Tıklama</span>
+        <span class="desc">+1 tık başına</span>
+        <span class="cost"><span id="cost-click">15</span> coin · Sahip: <span id="owned-click">0</span></span>
+      </button>
+      <button class="upgrade" id="up-auto" type="button">
+        <span class="name">Otomatik Tıklayıcı</span>
+        <span class="desc">+1 /sn</span>
+        <span class="cost"><span id="cost-auto">50</span> coin · Sahip: <span id="owned-auto">0</span></span>
+      </button>
+    </section>
+
+    <button id="reset" class="reset" type="button">Sıfırla</button>
+  </main>
+
+  <script src="js/game.js"></script>
+</body>
+</html>

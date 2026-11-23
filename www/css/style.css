@@ -1,0 +1,115 @@
+:root {
+  --bg: #1b1d2a;
+  --panel: #262a3d;
+  --text: #f2f4ff;
+  --muted: #9aa3c7;
+  --accent: #ffc53d;
+  --accent-dark: #d9a020;
+  --ok: #4ade80;
+  --bad: #64748b;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  overscroll-behavior: none;
+}
+
+.game {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 16px;
+  background: var(--panel);
+  border-radius: 14px;
+}
+
+.coins { font-size: 1.8rem; font-weight: 700; }
+.cps { font-size: 1.1rem; color: var(--muted); }
+small { font-size: 0.7em; color: var(--muted); font-weight: 400; }
+
+.clicker {
+  align-self: center;
+  width: min(60vw, 240px);
+  height: min(60vw, 240px);
+  border: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffe27a, var(--accent) 60%, var(--accent-dark));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 -8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.05s ease;
+  touch-action: manipulation;
+}
+
+.clicker:active { transform: scale(0.95); }
+.clicker-icon { font-size: min(18vw, 96px); }
+
+.shop {
+  display: grid;
+  gap: 10px;
+}
+
+.upgrade {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.upgrade .name { font-weight: 700; }
+.upgrade .desc { color: var(--muted); font-size: 0.9rem; }
+.upgrade .cost { color: var(--accent); font-size: 0.9rem; }
+.upgrade:disabled { opacity: 0.5; cursor: not-allowed; }
+.upgrade:not(:disabled):active { transform: scale(0.98); }
+
+.pop {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.2rem;
+  animation: pop 0.6s ease-out forwards;
+}
+
+@keyframes pop {
+  to { transform: translate(-50%, -150%); opacity: 0; }
+}
+
+.reset {
+  align-self: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
